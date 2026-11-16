@@ -491,7 +491,7 @@ with tab1:
             yaxis="y2"
         ))
         apply_chart_style(fig1, "Daily Impressions (Bar) vs. Clicks (Line)", "Impressions", "Clicks")
-        fig1.update_yaxes(range=[0, 800], dtick=200, yaxis="y1")
+        fig1.update_layout(yaxis=dict(range=[0, 800], dtick=200))
         fig1.update_layout(yaxis2=dict(range=[0, 30], dtick=5, overlaying="y", side="right", showgrid=False))
         st.plotly_chart(fig1, use_container_width=True)
 
@@ -568,7 +568,7 @@ with tab1:
             yaxis="y2"
         ))
         apply_chart_style(fig4, "Conversion Value (₹) vs. ROAS (Multiplier)", "Revenue (₹)", "ROAS (x)")
-        fig4.update_yaxes(range=[0, 1000], dtick=200, tickprefix="₹", yaxis="y1")
+        fig4.update_layout(yaxis=dict(range=[0, 1000], dtick=200, tickprefix="₹"))
         fig4.update_layout(yaxis2=dict(range=[0, 2.5], dtick=0.5, ticksuffix="x", overlaying="y", side="right", showgrid=False))
         st.plotly_chart(fig4, use_container_width=True)
 
