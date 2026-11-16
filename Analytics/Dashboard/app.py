@@ -196,17 +196,27 @@ st.markdown(f"""
 # --- Data Loading Function (Reads from CSV) ---
 @st.cache_data
 def load_data():
-    base_dir = Path(__file__).resolve().parent.parent
-    raw_path = base_dir / "Raw-Data" / "google_ads_data.csv"
+    app_dir = Path(__file__).resolve().parent
+    candidates = [
+        app_dir.parent / "Raw-Data" / "google_ads_data.csv",
+        app_dir.parent / "Processed-Data" / "google_ads_processed.csv",
+        Path("Analytics/Raw-Data/google_ads_data.csv"),
+        Path("Raw-Data/google_ads_data.csv"),
+        Path("Haven-and-Hue/Analytics/Raw-Data/google_ads_data.csv"),
+        app_dir.parent.parent / "Analytics" / "Raw-Data" / "google_ads_data.csv"
+    ]
     
-    if not raw_path.exists():
-        raw_path = Path("Haven-and-Hue/Analytics/Raw-Data/google_ads_data.csv")
-    
-    if not raw_path.exists():
-        st.error(f"Data file not found at: {raw_path}")
+    target_path = None
+    for p in candidates:
+        if p.exists():
+            target_path = p
+            break
+
+    if not target_path:
+        st.error(f"Data file could not be found. Checked candidate paths: {[str(c) for c in candidates]}")
         return pd.DataFrame()
 
-    df = pd.read_csv(raw_path)
+    df = pd.read_csv(target_path)
     df['Date'] = pd.to_datetime(df['Date']).dt.date
     return df
 
@@ -233,9 +243,23 @@ df_all = load_data()
 
 # --- Sidebar Controls & Filters ---
 with st.sidebar:
-    logo_path = Path(__file__).resolve().parent.parent.parent / "Brand-Identity" / "logo.png"
-    if logo_path.exists():
-        st.image(str(logo_path), use_container_width=True)
+    app_dir = Path(__file__).resolve().parent
+    logo_candidates = [
+        app_dir.parent.parent / "Brand-Identity" / "logo.png",
+        Path("Brand-Identity/logo.png"),
+        Path("Haven-and-Hue/Brand-Identity/logo.png"),
+        app_dir.parent.parent / "Website" / "public" / "assets" / "logo.png",
+        Path("Website/public/assets/logo.png"),
+        Path("public/assets/logo.png")
+    ]
+    logo_file = None
+    for lp in logo_candidates:
+        if lp.exists():
+            logo_file = lp
+            break
+
+    if logo_file:
+        st.image(str(logo_file), use_container_width=True)
     else:
         st.markdown(f"<h2 style='color: {COLOR_PRIMARY};'>Haven & Hue</h2>", unsafe_allow_html=True)
         st.caption("Home Decor • Digital Marketing Case Study")
