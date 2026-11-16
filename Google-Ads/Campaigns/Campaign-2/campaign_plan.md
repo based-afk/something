@@ -76,3 +76,4 @@ Negative keywords to filter out non-target search traffic:
 ## 7. Ad Placement & Ad Rank Explanation
 - **Ad Placement:** Top of Google Search Results above organic listings.
 - **Quality Score Optimization:** High relevance through multi-item ad extensions (Sitelinks to Ceramic Vases, Decorative Cushions, and Scented Candles) leading directly to `/collections/home-accessories`.
+

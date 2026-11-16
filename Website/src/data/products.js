@@ -132,3 +132,4 @@ export const categories = [
     route: "/collections/home-accessories"
   }
 ];
+

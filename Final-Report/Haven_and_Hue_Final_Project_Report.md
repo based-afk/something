@@ -178,29 +178,55 @@ $$\text{ROAS} = \frac{\text{Conversion Value}}{\text{Advertising Spend}}$$
 
 ## 7. 3-Day Campaign Performance Evaluation & ROAS Analysis
 
-### 7.1 Aggregate Results (3-Day Simulation)
-- **Total Impressions:** 8,860
-- **Total Clicks:** 445
-- **Aggregate CTR:** **5.02%**
-- **Total Spend:** **₹4,960.10**
-- **Average CPC:** **₹11.15**
-- **Total Conversions:** 28 orders
-- **Conversion Rate:** **6.29%**
-- **Conversion Value:** **₹25,472.00**
-- **Overall ROAS:** **5.14x**
+*(Simulated Data – Academic Case Study)*
 
-### 7.2 Campaign Breakdown
-1. **Campaign 2 (Home Accessories):** Top performer in volume and efficiency. Recorded **3,810 impressions**, **193 clicks**, lowest CPC (**₹7.99**), and highest ROAS (**5.95x**).
-2. **Campaign 3 (Lighting & Ambience):** Top performer in CTR (**5.18%**) and high Average Order Value (₹1,299), yielding **₹9,093.00** revenue on 116 clicks (**5.10x ROAS**).
-3. **Campaign 1 (Wall Art & Decor):** Strong conversion rate (**6.62%**) with **136 clicks** yielding **₹7,191.00** (**4.40x ROAS**).
+### 7.1 Aggregate Results (3-Day Student Campaign)
+- **Total Impressions:** **1,850**
+- **Total Clicks:** **61**
+- **Aggregate CTR:** **3.30%**
+- **Total Spend (Ad Cost):** **₹1,220.00**
+- **Average CPC:** **₹20.00**
+- **Total Conversions:** **2** simulated orders
+- **Conversion Rate:** **3.28%**
+- **Conversion Value:** **₹1,398.00** (Wall Art ₹799 + Ceramic Vases ₹599)
+- **Overall ROAS:** **1.15x** (Initial breakeven exploration)
+
+### 7.2 Multi-Campaign Performance Matrix
+| Metric | Campaign 1: Wall Art & Decor | Campaign 2: Home Accessories | Campaign 3: Lighting & Ambience | Overall Aggregate |
+|---|---|---|---|---|
+| **Target Products** | Decorative Wall Art (₹799) | Ceramic Vases (₹599), Cushions (₹499), Candles (₹399) | Table Lamps (₹1,299) | 5 Catalogue Items |
+| **Impressions** | 580 | 820 | 450 | **1,850** |
+| **Clicks** | 19 | 28 | 14 | **61** |
+| **CTR (%)** | 3.28% | 3.41% | 3.11% | **3.30%** |
+| **Total Spend (INR)** | ₹410.00 | ₹470.00 | ₹340.00 | **₹1,220.00** |
+| **Avg. CPC (INR)** | ₹21.58 | ₹16.79 | ₹24.29 | **₹20.00** |
+| **Conversions** | 1 | 1 | 0 | **2** |
+| **Conv. Rate (%)** | 5.26% | 3.57% | 0.00% | **3.28%** |
+| **Conversion Value (INR)** | ₹799.00 | ₹599.00 | ₹0.00 | **₹1,398.00** |
+| **ROAS** | **1.95x** | **1.27x** | **0.00x** | **1.15x** |
+
+### 7.3 Marketing Acquisition & Conversion Funnel
+```text
+[1,850] Impressions (Ad Exposures)
+   │   (3.30% CTR)
+   ▼
+  [61] Clicks (Site Visitors)
+   │   (9.84% Intent)
+   ▼
+   [6] Add to Cart (High Purchase Intent)
+   │   (33.33% Checkout Completion)
+   ▼
+   [2] Purchases (Completed Simulated Conversions)
+```
 
 ---
 
 ## 8. Strategic Marketing Insights & Optimization Roadmap
 
-1. **Shift Budget to High-ROAS Inventory:** Reallocate 15% of budget from Wall Art to Home Accessories to maximize the lower CPC auction space.
-2. **Leverage Ad Variation B:** Messaging emphasizing entry price points (₹399) drove 14% higher engagement than pure brand copy.
-3. **Sitelink Extension Expansion:** Add sitelinks for "Customer Styling Guides" and "Free Delivery Thresholds" to lift Quality Scores to 9/10.
+1. **Avoid Premature Reallocations:** In an early 3-day test with only 61 clicks, variance is primarily driven by small-sample auction dynamics. Collect at least 200–300 clicks across 14 days before altering core budgets.
+2. **High Acquisition Cost (CPA):** At ₹610 per acquired customer (₹1,220 spend / 2 orders), unit margins are thin despite an overall 1.15x ROAS.
+3. **Capture Funnel Abandonment:** 4 of the 6 users who added items to their bag abandoned before checking out. Adding visible payment security badges, shipping timelines, and first-order discount codes can recover high-intent traffic.
+4. **Refine High-CPC Categories:** Campaign 3 (Lighting) experienced the highest CPC (₹24.29) without conversions. Introduce tighter phrase matches and negative keywords to reduce click costs.
 
 ---
 
@@ -242,3 +268,4 @@ This project is an **academic demonstration** created for a college Digital Mark
 - All financial spend, impression counts, clicks, and conversion data are **simulated** using grounded statistical models.
 - No live Google Ads campaigns were activated, no real credit cards were charged, and no real customer payments or orders were processed.
 - The website and analytics dashboard are designed to showcase professional digital marketing competency, UI/UX execution, and data-driven optimization methodology.
+

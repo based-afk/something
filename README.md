@@ -132,17 +132,25 @@ streamlit run Dashboard/app.py
 
 ## 📊 Summary of 3-Day Simulated Campaign Results
 
+*(Simulated Data – Academic Case Study: 3-Day Student Advertising Experiment)*
+
 | Metric | Campaign 1 (Wall Art) | Campaign 2 (Accessories) | Campaign 3 (Lighting) | Overall Total |
 |---|---|---|---|---|
-| **Impressions** | 2,810 | 3,810 | 2,240 | **8,860** |
-| **Clicks** | 136 | 193 | 116 | **445** |
-| **CTR** | 4.84% | 5.07% | 5.18% | **5.02%** |
-| **Spend (Cost)** | ₹1,632.80 | ₹1,542.90 | ₹1,784.40 | **₹4,960.10** |
-| **Avg. CPC** | ₹12.01 | ₹7.99 | ₹15.38 | **₹11.15** |
-| **Conversions** | 9 | 12 | 7 | **28** |
-| **Conv. Rate** | 6.62% | 6.22% | 6.03% | **6.29%** |
-| **Conversion Value** | ₹7,191.00 | ₹9,188.00 | ₹9,093.00 | **₹25,472.00** |
-| **ROAS** | **4.40x** | **5.95x** | **5.10x** | **5.14x** |
+| **Impressions** | 580 | 820 | 450 | **1,850** |
+| **Clicks** | 19 | 28 | 14 | **61** |
+| **CTR (%)** | 3.28% | 3.41% | 3.11% | **3.30%** |
+| **Spend (Cost)** | ₹410.00 | ₹470.00 | ₹340.00 | **₹1,220.00** |
+| **Avg. CPC** | ₹21.58 | ₹16.79 | ₹24.29 | **₹20.00** |
+| **Conversions** | 1 | 1 | 0 | **2** |
+| **Conv. Rate (%)** | 5.26% | 3.57% | 0.00% | **3.28%** |
+| **Conversion Value** | ₹799.00 | ₹599.00 | ₹0.00 | **₹1,398.00** |
+| **ROAS** | **1.95x** | **1.27x** | **0.00x** | **1.15x** |
+
+### Conversion Funnel Summary:
+- **Impressions:** 1,850 (Ad view exposures)
+- **Clicks:** 61 (Storefront visitors)
+- **Add to Cart:** 6 (High intent)
+- **Purchases:** 2 (Simulated orders)
 
 ---
 
@@ -165,3 +173,4 @@ streamlit run Dashboard/app.py
 
 ## ⚖️ Academic Disclaimer
 This project is an educational case study. All advertisements are in demonstration mode, and all analytics data points reflect mathematically modeled simulated metrics. No actual financial transactions or paid ad spends were conducted.
+

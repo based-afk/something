@@ -112,12 +112,10 @@ st.markdown(f"""
 # --- Data Loading Function (Reads from CSV) ---
 @st.cache_data
 def load_data():
-    # Resolve CSV paths dynamically
     base_dir = Path(__file__).resolve().parent.parent
     raw_path = base_dir / "Raw-Data" / "google_ads_data.csv"
     
     if not raw_path.exists():
-        # Fallback to local check
         raw_path = Path("Haven-and-Hue/Analytics/Raw-Data/google_ads_data.csv")
     
     if not raw_path.exists():
@@ -186,8 +184,9 @@ with st.sidebar:
     st.markdown("#### 📖 Project Info")
     st.info(
         "**Brand:** Haven & Hue\n\n"
-        "**Purpose:** College Digital Marketing Case Study\n\n"
-        "**Dataset:** 3-Day Simulated Campaign"
+        "**Context:** Student Advertising Experiment\n\n"
+        "**Status:** Simulated Data – Academic Case Study\n\n"
+        "**Duration:** 3 Days Initial Testing"
     )
 
 # Filter dataset based on selections
@@ -208,13 +207,13 @@ tot_imp, tot_clicks, tot_ctr, tot_cost, tot_cpc, tot_conv, tot_cvr, tot_val, tot
 col_head1, col_head2 = st.columns([3, 1])
 with col_head1:
     st.markdown("<h1 style='margin-bottom: 4px;'>Haven & Hue — Google Ads Performance Dashboard</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #85866A; font-size: 14px; margin-bottom: 12px;'>Multi-Campaign Performance Analytics & KPI Evaluation • College Digital Marketing Case Study</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #85866A; font-size: 14px; margin-bottom: 12px;'>Early-Stage Campaign Performance Tracking • 3-Day Student Digital Marketing Experiment</p>", unsafe_allow_html=True)
 
 with col_head2:
     st.markdown(f"""
     <div style='text-align: right; padding-top: 10px;'>
         <span style='background-color: {COLOR_PRIMARY}; color: #FFFFFF; font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 600;'>
-            Live 3-Day Analysis
+            Reporting Period: 3 Days
         </span>
     </div>
     """, unsafe_allow_html=True)
@@ -222,12 +221,12 @@ with col_head2:
 # Mandatory Academic Disclaimer Notice
 st.markdown("""
 <div class="notice-banner">
-    ⚠️ <strong>Academic Notice:</strong> Demonstration dashboard using simulated campaign data for a college Digital Marketing case study. No paid advertising was executed, and all metrics reflect structured econometric simulation models.
+    ⚠️ <strong>Simulated Data – Academic Case Study:</strong> This dashboard demonstrates early-stage advertising metrics for a small, student-managed advertising experiment running for three days. Figures represent simulated educational data. No live Google Ads campaigns were activated, and no real funds were expended.
 </div>
 """, unsafe_allow_html=True)
 
 # --- KPI Metric Cards Row (9 Key Performance Indicators) ---
-st.markdown("### 📌 Executive KPI Summary")
+st.markdown("### 📌 Executive KPI Summary (3-Day Aggregate)")
 kpi_cols1 = st.columns(5)
 kpi_cols2 = st.columns(4)
 
@@ -254,25 +253,25 @@ with kpi_cols1[2]:
     <div class="kpi-card">
         <div class="kpi-label">Click-Through Rate</div>
         <div class="kpi-value">{tot_ctr:.2f}%</div>
-        <div class="kpi-sub">Benchmark: 3.50%</div>
+        <div class="kpi-sub">Benchmark: ~3.00%</div>
     </div>
     """, unsafe_allow_html=True)
 
 with kpi_cols1[3]:
     st.markdown(f"""
     <div class="kpi-card">
-        <div class="kpi-label">Total Spend (Cost)</div>
+        <div class="kpi-label">Total Ad Spend</div>
         <div class="kpi-value">₹{tot_cost:,.2f}</div>
-        <div class="kpi-sub">Budget: ₹5,000 max</div>
+        <div class="kpi-sub">Student trial budget</div>
     </div>
     """, unsafe_allow_html=True)
 
 with kpi_cols1[4]:
     st.markdown(f"""
     <div class="kpi-card">
-        <div class="kpi-label">Avg. Cost Per Click</div>
+        <div class="kpi-label">Average CPC</div>
         <div class="kpi-value">₹{tot_cpc:.2f}</div>
-        <div class="kpi-sub">Target: &lt; ₹15.00</div>
+        <div class="kpi-sub">Early keyword cost</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -281,7 +280,7 @@ with kpi_cols2[0]:
     <div class="kpi-card">
         <div class="kpi-label">Total Conversions</div>
         <div class="kpi-value">{tot_conv:,}</div>
-        <div class="kpi-sub">Simulated orders</div>
+        <div class="kpi-sub">Simulated purchases</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -290,7 +289,7 @@ with kpi_cols2[1]:
     <div class="kpi-card">
         <div class="kpi-label">Conversion Rate</div>
         <div class="kpi-value">{tot_cvr:.2f}%</div>
-        <div class="kpi-sub">E-comm benchmark: ~3.0%</div>
+        <div class="kpi-sub">2 orders from 61 clicks</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -299,7 +298,7 @@ with kpi_cols2[2]:
     <div class="kpi-card">
         <div class="kpi-label">Conversion Value</div>
         <div class="kpi-value">₹{tot_val:,.2f}</div>
-        <div class="kpi-sub">Simulated gross revenue</div>
+        <div class="kpi-sub">Wall Art + Vases</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -308,7 +307,7 @@ with kpi_cols2[3]:
     <div class="kpi-card">
         <div class="kpi-label">Return on Ad Spend</div>
         <div class="kpi-value">{tot_roas:.2f}x</div>
-        <div class="kpi-sub">Target: &gt; 3.50x</div>
+        <div class="kpi-sub">Initial breakeven test</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -327,7 +326,6 @@ with tab1:
     st.markdown("#### 1. Daily Campaign Volume Trends")
     chart_c1, chart_c2 = st.columns(2)
     
-    # Chart 1: Daily Impressions & Clicks
     daily_summary = filtered_df.groupby('Date')[['Impressions', 'Clicks', 'Cost', 'Conversions']].sum().reset_index()
     daily_summary['Date_Str'] = daily_summary['Date'].astype(str)
     
@@ -360,7 +358,6 @@ with tab1:
         )
         st.plotly_chart(fig1, use_container_width=True)
 
-    # Chart 2: Daily CTR Trend across Campaigns
     with chart_c2:
         df_ctr = filtered_df.copy()
         df_ctr['CTR'] = (df_ctr['Clicks'] / df_ctr['Impressions']) * 100
@@ -389,14 +386,13 @@ with tab1:
     st.markdown("#### 2. Financial & Conversion Performance")
     chart_c3, chart_c4 = st.columns(2)
     
-    # Chart 3: Spend Distribution Donut Chart
     with chart_c3:
         spend_by_camp = filtered_df.groupby('Campaign')['Cost'].sum().reset_index()
         fig3 = px.pie(
             spend_by_camp,
             values="Cost",
             names="Campaign",
-            title="Advertising Spend Distribution by Campaign",
+            title="Advertising Spend Distribution by Campaign (Total: ₹1,220)",
             hole=0.45,
             color_discrete_sequence=[COLOR_ACCENT, COLOR_SECONDARY, COLOR_PRIMARY]
         )
@@ -407,14 +403,13 @@ with tab1:
         )
         st.plotly_chart(fig3, use_container_width=True)
 
-    # Chart 4: Conversion Value & ROAS Comparison
     with chart_c4:
         roas_camp = filtered_df.groupby('Campaign').agg({
             'Cost': 'sum',
             'Conversion Value': 'sum',
             'Conversions': 'sum'
         }).reset_index()
-        roas_camp['ROAS'] = roas_camp['Conversion Value'] / roas_camp['Cost']
+        roas_camp['ROAS'] = roas_camp.apply(lambda r: r['Conversion Value'] / r['Cost'] if r['Cost'] > 0 else 0.0, axis=1)
         
         fig4 = go.Figure()
         fig4.add_trace(go.Bar(
@@ -444,20 +439,19 @@ with tab1:
         )
         st.plotly_chart(fig4, use_container_width=True)
 
-    st.markdown("#### 3. Marketing Acquisition & Conversion Funnel")
-    # Chart 5: Funnel Chart
-    funnel_stages = ['Impressions (Ad Views)', 'Clicks (Site Visitors)', 'Conversions (Simulated Purchases)']
-    funnel_values = [tot_imp, tot_clicks, tot_conv]
+    st.markdown("#### 3. Small-Scale Marketing Acquisition Funnel")
+    funnel_stages = ['Impressions (Ad Views)', 'Clicks (Site Visitors)', 'Add to Cart (Intent)', 'Purchases (Conversions)']
+    funnel_values = [1850, 61, 6, 2]
     
     fig5 = go.Figure(go.Funnel(
         y=funnel_stages,
         x=funnel_values,
         textinfo="value+percent initial",
-        marker=dict(color=[COLOR_SECONDARY, COLOR_ACCENT, COLOR_PRIMARY]),
+        marker=dict(color=[COLOR_SECONDARY, "#A3A380", COLOR_ACCENT, COLOR_PRIMARY]),
         connector={"line": {"color": COLOR_BORDER, "dash": "solid", "width": 1}}
     ))
     fig5.update_layout(
-        title="Aggregate Customer Journey Funnel (All Campaigns)",
+        title="Conversion Funnel: 1,850 Impressions → 61 Clicks → 6 Add to Cart → 2 Purchases",
         paper_bgcolor=COLOR_SURFACE,
         plot_bgcolor=COLOR_SURFACE,
         font=dict(family="Inter", color=COLOR_PRIMARY),
@@ -482,7 +476,6 @@ with tab2:
     camp_summary['Conv. Rate (%)'] = (camp_summary['Conversions'] / camp_summary['Clicks']) * 100
     camp_summary['ROAS'] = camp_summary['Conversion Value'] / camp_summary['Cost']
     
-    # Format table for clean display
     display_df = camp_summary.copy()
     display_df['Cost'] = display_df['Cost'].apply(lambda x: f"₹{x:,.2f}")
     display_df['Conversion Value'] = display_df['Conversion Value'].apply(lambda x: f"₹{x:,.2f}")
@@ -493,7 +486,7 @@ with tab2:
     
     st.dataframe(display_df, use_container_width=True, hide_index=True)
     
-    st.markdown("#### 📅 Granular Daily Log")
+    st.markdown("#### 📅 Granular Daily Log (3-Day Natural Variations)")
     log_df = filtered_df.copy()
     log_df['CTR (%)'] = ((log_df['Clicks'] / log_df['Impressions']) * 100).round(2)
     log_df['CPC (₹)'] = (log_df['Cost'] / log_df['Clicks']).round(2)
@@ -505,79 +498,67 @@ with tab2:
 with tab3:
     st.markdown("#### 🎯 Benchmark Comparison: Proposed Campaign Targets vs. Simulated Performance")
     st.markdown(
-        "Evaluating planned Google Ads strategy benchmarks against econometric simulated execution across the 3 test days."
+        "Evaluating planned benchmarks against early 3-day student campaign test performance."
     )
     
     target_data = [
         {
             "Metric": "Click-Through Rate (CTR)",
-            "Campaign 1 (Wall Art) Target": "4.20%",
-            "Campaign 1 Actual": "4.87%",
-            "Campaign 2 (Accessories) Target": "4.50%",
-            "Campaign 2 Actual": "5.01%",
-            "Campaign 3 (Lighting) Target": "4.80%",
-            "Campaign 3 Actual": "5.18%",
-            "Evaluation": "Exceeded (+0.5% to +0.7% across all campaigns)"
+            "Campaign 1 (Wall Art)": "3.28% (Target: ~3.00%)",
+            "Campaign 2 (Accessories)": "3.41% (Target: ~3.20%)",
+            "Campaign 3 (Lighting)": "3.11% (Target: ~2.80%)",
+            "Overall Result": "3.30% (Modest, healthy search CTR for new brand)"
         },
         {
             "Metric": "Average Cost Per Click (CPC)",
-            "Campaign 1 (Wall Art) Target": "₹12.50",
-            "Campaign 1 Actual": "₹11.96",
-            "Campaign 2 (Accessories) Target": "₹8.40",
-            "Campaign 2 Actual": "₹7.96",
-            "Campaign 3 (Lighting) Target": "₹15.80",
-            "Campaign 3 Actual": "₹15.40",
-            "Evaluation": "Lower than planned (Cost-efficient bidding)"
+            "Campaign 1 (Wall Art)": "₹21.58 (Target: ₹20.00)",
+            "Campaign 2 (Accessories)": "₹16.79 (Target: ₹16.00)",
+            "Campaign 3 (Lighting)": "₹24.29 (Target: ₹22.00)",
+            "Overall Result": "₹20.00 (Consistent with modest non-optimized bidding)"
         },
         {
-            "Metric": "Conversion Rate",
-            "Campaign 1 (Wall Art) Target": "5.00%",
-            "Campaign 1 Actual": "6.62%",
-            "Campaign 2 (Accessories) Target": "5.50%",
-            "Campaign 2 Actual": "6.22%",
-            "Campaign 3 (Lighting) Target": "5.00%",
-            "Campaign 3 Actual": "6.03%",
-            "Evaluation": "Strong (Benefited from dedicated landing pages)"
+            "Metric": "Conversions & Rate",
+            "Campaign 1 (Wall Art)": "1 Order (5.26%)",
+            "Campaign 2 (Accessories)": "1 Order (3.57%)",
+            "Campaign 3 (Lighting)": "0 Orders (0.00%)",
+            "Overall Result": "2 Orders (3.28% of total 61 clicks)"
         },
         {
-            "Metric": "Target ROAS",
-            "Campaign 1 (Wall Art) Target": "3.80x",
-            "Campaign 1 Actual": "4.41x",
-            "Campaign 2 (Accessories) Target": "4.50x",
-            "Campaign 2 Actual": "5.92x",
-            "Campaign 3 (Lighting) Target": "3.50x",
-            "Campaign 3 Actual": "5.02x",
-            "Evaluation": "Substantially exceeded target revenue"
+            "Metric": "Return on Ad Spend (ROAS)",
+            "Campaign 1 (Wall Art)": "1.95x (₹799 value on ₹410 spend)",
+            "Campaign 2 (Accessories)": "1.27x (₹599 value on ₹470 spend)",
+            "Campaign 3 (Lighting)": "0.00x (₹0 value on ₹340 spend)",
+            "Overall Result": "1.15x (Near breakeven on early exploration)"
         }
     ]
     st.table(pd.DataFrame(target_data))
     
-    st.success("✅ **Key Finding:** Dedicated ad landing pages (`/collections/wall-art`, `/collections/home-accessories`, `/collections/lighting`) produced higher Quality Scores and conversion rates compared to generic e-commerce homepages.")
+    st.info("ℹ️ **Observation on Sample Size:** With only 61 total clicks over 3 days, performance variances represent natural auction volatility and small-sample variability rather than definitive long-term trends.")
 
 # ================= TAB 4: MARKETING INSIGHTS =================
 with tab4:
-    st.markdown("#### 💡 Marketing Insights & Optimization Strategies")
+    st.markdown("#### 💡 Strategic Insights & Student Project Recommendations")
     
     col_in1, col_in2 = st.columns(2)
     
     with col_in1:
         st.markdown(f"""
         <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER}; margin-bottom: 16px;'>
-            <h4 style='color: {COLOR_ACCENT}; margin-top: 0;'>🏆 Best-Performing Campaign</h4>
+            <h4 style='color: {COLOR_ACCENT}; margin-top: 0;'>🔍 Initial Traffic Generation vs. Limited Conversion Data</h4>
             <p style='font-size: 13px; line-height: 1.6; color: {COLOR_PRIMARY};'>
-                <strong>Campaign 2: Home Accessories</strong> delivered the highest efficiency across multiple dimensions:
-                <br>• <strong>Top Volume:</strong> 3,810 impressions and 193 clicks.
-                <br>• <strong>Lowest CPC:</strong> Just <strong>₹7.96</strong> per click, allowing maximum traffic acquisition.
-                <br>• <strong>Highest ROAS:</strong> Achieved an outstanding <strong>5.92x ROAS</strong> (₹9,188 revenue on ₹1,542.90 spend).
+                Across the 3-day testing window, the campaign generated <strong>1,850 impressions</strong> and <strong>61 clicks</strong>, demonstrating initial keyword discoverability.
+                <br>• However, with only <strong>2 recorded purchases</strong>, conversion data is strictly exploratory.
+                <br>• In early advertising phases, 61 visitors is too small a statistical baseline to draw definitive conclusions regarding user preferences or permanent conversion efficacy.
             </p>
         </div>
         
         <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER};'>
-            <h4 style='color: {COLOR_PRIMARY}; margin-top: 0;'>⚡ Highest CTR Campaign</h4>
+            <h4 style='color: {COLOR_PRIMARY}; margin-top: 0;'>🖱️ Click Attraction & Campaign Characteristics</h4>
             <p style='font-size: 13px; line-height: 1.6; color: {COLOR_PRIMARY};'>
-                <strong>Campaign 3: Lighting & Ambience</strong> captured the highest CTR at <strong>5.18%</strong>.
-                <br>• Strong emotional resonance around keywords like <em>"warm ambient lighting"</em> and <em>"ceramic bedside lamp"</em>.
-                <br>• High average order value (Table Lamp at ₹1,299) produced ₹9,093 in simulated revenue with only 116 clicks.
+                <strong>Campaign 2 (Home Accessories)</strong> captured the highest interest:
+                <br>• <strong>Top Clicks:</strong> 28 of the 61 total clicks (45.9% of traffic) at an affordable average CPC of <strong>₹16.79</strong>.
+                <br>• <strong>Wall Art (Campaign 1):</strong> Generated 19 clicks and 1 purchase of Decorative Wall Art (₹799).
+                <br>• <strong>Lighting (Campaign 3):</strong> Drew 14 clicks at a higher CPC of <strong>₹24.29</strong> without any conversions, reflecting higher hesitation for a ₹1,299 item within a brief 3-day test.
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -585,22 +566,22 @@ with tab4:
     with col_in2:
         st.markdown(f"""
         <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER}; margin-bottom: 16px;'>
-            <h4 style='color: {COLOR_SECONDARY}; margin-top: 0;'>🔍 Budget Efficiency & CPC Analysis</h4>
+            <h4 style='color: {COLOR_SECONDARY}; margin-top: 0;'>⚖️ Acquisition Cost vs. Conversion Value</h4>
             <p style='font-size: 13px; line-height: 1.6; color: {COLOR_PRIMARY};'>
-                • <strong>Total 3-Day Advertising Spend:</strong> ₹4,960.10 across 445 clicks.
-                <br>• <strong>Average Aggregate CPC:</strong> ₹11.15.
-                <br>• <strong>Total Simulated Revenue:</strong> ₹25,472.00 generating an overall <strong>5.14x ROAS</strong>.
-                <br>• Campaign 1 (Wall Art) had slightly lower conversion frequency initially (9 conversions) due to higher purchase deliberation for art prints.
+                • <strong>Total Advertising Expenditure:</strong> ₹1,220 across 3 days.
+                <br>• <strong>Cost Per Acquisition (CPA):</strong> <strong>₹610.00</strong> per acquired order (₹1,220 / 2 conversions).
+                <br>• <strong>Gross Revenue:</strong> ₹1,398.00 resulting in a modest <strong>1.15x ROAS</strong>.
+                <br>• While the campaign technically broke even on ad spend, a ₹610 customer acquisition cost leaves very thin margins after considering packaging and fulfillment.
             </p>
         </div>
         
         <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER};'>
-            <h4 style='color: {COLOR_ACCENT}; margin-top: 0;'>🚀 Actionable Optimization Recommendations</h4>
+            <h4 style='color: {COLOR_ACCENT}; margin-top: 0;'>🚀 Actionable Next Steps for Student Evaluation</h4>
             <p style='font-size: 13px; line-height: 1.6; color: {COLOR_PRIMARY};'>
-                1. <strong>Reallocate Budget to High-ROAS Segments:</strong> Shift 15% of budget from Wall Art to Home Accessories to capitalize on its sub-₹8 CPC and 5.9x ROAS.
-                <br>2. <strong>Expand Negative Keyword Lists:</strong> Add <em>"rechargeable"</em>, <em>"study lamp"</em>, and <em>"cheap prints"</em> to eliminate low-intent search terms.
-                <br>3. <strong>A/B Test Ad Variation B:</strong> Scale Variation B (living room styling focus) which highlighted the ₹399 entry price point.
-                <br>4. <strong>Implement Sitelink Extensions:</strong> Direct users to customer reviews and bundle discounts on the landing pages.
+                1. <strong>Do Not Make Drastic Budget Shifts Yet:</strong> With only 3 days and 61 clicks, collecting more data (minimum 200–300 clicks over 14 days) is critical before altering campaign budgets.
+                <br>2. <strong>Address the Funnel Drop-off:</strong> 6 users added items to their cart, but only 2 completed checkout. Adding trust badges, shipping timelines, or a first-purchase incentive can lift checkout completion.
+                <br>3. <strong>Refine Keyword Matching:</strong> Review search terms reports to prune broad terms in Campaign 3 (Lighting) to reduce average CPC from ₹24.29 toward ₹18.00.
+                <br>4. <strong>Improve Product Detail Engagement:</strong> Add dimension diagrams and room-pairing suggestions to reduce bounce rates.
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -609,7 +590,7 @@ with tab4:
 st.markdown("---")
 st.markdown(
     "<div style='text-align: center; color: #85866A; font-size: 12px;'>"
-    "Haven & Hue Home Decor — Digital Marketing Performance Dashboard • Built with Streamlit, Pandas & Plotly"
+    "Haven & Hue Home Decor — Simulated Data – Academic Case Study • 3-Day Student Digital Marketing Experiment"
     "</div>",
     unsafe_allow_html=True
 )

@@ -103,3 +103,4 @@ This document compiles the **6 complete Responsive Search Ad (RSA) variations** 
 - **Description 2:** Sculptural silhouette with premium brass accents and braided fabric wheat cord.
 - **Description 3:** Contemporary fluted stoneware with linen drum shades for warm, glare-free light.
 - **Description 4:** Direct-to-consumer designer lighting without excessive showroom markups.
+

@@ -76,3 +76,4 @@ Negative keywords to exclude non-relevant commercial intent:
 ## 7. Ad Placement & Ad Rank Explanation
 - **Ad Rank Mechanics:**
   High Quality Score (8/10) projected through exact keyword-to-landing-page congruence (`/collections/lighting` featuring the fluted ceramic lamp hero banner and specifications), boosting top position impression share at competitive auction rates.
+

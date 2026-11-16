@@ -80,3 +80,4 @@ Negative keywords ensure advertising spend is not wasted on non-converting or ir
   - **Expected CTR:** High due to exact title matching and clear price callout (₹799).
   - **Ad Relevance:** Tailored headlines aligning directly with keywords like `"modern wall art for living room"`.
   - **Landing Page Experience:** The dedicated `/collections/wall-art` landing page loads instantly with matching hero headline, product specifications, and direct product detail links.
+

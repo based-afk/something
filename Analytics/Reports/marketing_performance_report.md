@@ -1,28 +1,29 @@
 # Haven & Hue — Digital Marketing Performance & Analytics Report
+## Simulated Data – Academic Case Study (3-Day Student Campaign)
 
 **Brand:** Haven & Hue Home Decor  
 **Project:** College Digital Marketing Case Study & Google Search Advertising Evaluation  
-**Evaluation Window:** 3-Day Campaign Simulation (2026-11-14 to 2026-11-16)  
-**Author:** Full-Stack Frontend & Data Visualization Engineer  
+**Experiment Window:** 3-Day Initial Testing Period (2026-11-14 to 2026-11-16)  
+**Context:** Small, student-managed e-commerce advertising experiment with limited budget  
 
 ---
 
 ## 1. Executive Summary
 
-This report delivers a thorough empirical evaluation of three Google Search advertising campaigns executed for **Haven & Hue**, a fictional Indian home decor brand specializing in minimalist, accessible living room accessories.
+This report provides an analytical review of a three-day, small-scale Google Search advertising experiment conducted for **Haven & Hue**, a fictional home decor brand.
 
-Over the three-day simulated testing period, the campaigns recorded:
-- **Total Impressions:** 8,860
-- **Total Clicks:** 445
-- **Aggregate Click-Through Rate (CTR):** **5.02%** (Industry benchmark: 3.50%)
-- **Total Advertising Spend:** **₹4,960.10**
-- **Average Cost Per Click (CPC):** **₹11.15**
-- **Total Conversions:** 28 simulated customer orders
-- **Conversion Rate:** **6.29%** (E-commerce benchmark: ~3.00%)
-- **Gross Conversion Value:** **₹25,472.00**
-- **Return on Ad Spend (ROAS):** **5.14x** (Every ₹1 spent yielded ₹5.14 in simulated revenue)
+Running on a modest student test budget of **₹1,220.00** across three days, the objective was to test initial keyword discovery, monitor click-through rates across three product clusters, and observe early user engagement through dedicated landing pages.
 
-The campaign strategy demonstrated the power of deploying **dedicated, message-matched landing pages** (`/collections/wall-art`, `/collections/home-accessories`, `/collections/lighting`) rather than routing paid traffic to a generic homepage.
+### Key Executive Figures (3-Day Totals):
+- **Total Impressions:** **1,850** ad views
+- **Total Clicks:** **61** storefront visitors
+- **Click-Through Rate (CTR):** **3.30%** (Consistent with average Google Search benchmark ~3.00%)
+- **Total Advertising Spend:** **₹1,220.00** (Avg. ₹406.67/day)
+- **Average Cost Per Click (CPC):** **₹20.00**
+- **Total Conversions:** **2** simulated orders
+- **Conversion Rate:** **3.28%** (2 orders from 61 clicks)
+- **Conversion Value:** **₹1,398.00** (1 Decorative Wall Art at ₹799 + 1 Ceramic Vases Duo at ₹599)
+- **Return on Ad Spend (ROAS):** **1.15x** (Near breakeven on early ad spend)
 
 ---
 
@@ -31,72 +32,81 @@ The campaign strategy demonstrated the power of deploying **dedicated, message-m
 | Metric | Campaign 1: Wall Art & Decor | Campaign 2: Home Accessories | Campaign 3: Lighting & Ambience | Overall Aggregate |
 |---|---|---|---|---|
 | **Target Products** | Decorative Wall Art (₹799) | Ceramic Vases (₹599), Cushions (₹499), Candles (₹399) | Table Lamps (₹1,299) | 5 Catalogue Items |
-| **Impressions** | 2,810 | 3,810 | 2,240 | **8,860** |
-| **Clicks** | 136 | 193 | 116 | **445** |
-| **CTR (%)** | 4.84% | 5.07% | 5.18% | **5.02%** |
-| **Total Spend (INR)** | ₹1,632.80 | ₹1,542.90 | ₹1,784.40 | **₹4,960.10** |
-| **Avg. CPC (INR)** | ₹12.01 | ₹7.99 | ₹15.38 | **₹11.15** |
-| **Conversions** | 9 | 12 | 7 | **28** |
-| **Conv. Rate (%)** | 6.62% | 6.22% | 6.03% | **6.29%** |
-| **Conversion Value (INR)** | ₹7,191.00 | ₹9,188.00 | ₹9,093.00 | **₹25,472.00** |
-| **ROAS** | **4.40x** | **5.95x** | **5.10x** | **5.14x** |
+| **Impressions** | 580 | 820 | 450 | **1,850** |
+| **Clicks** | 19 | 28 | 14 | **61** |
+| **CTR (%)** | 3.28% | 3.41% | 3.11% | **3.30%** |
+| **Total Spend (INR)** | ₹410.00 | ₹470.00 | ₹340.00 | **₹1,220.00** |
+| **Avg. CPC (INR)** | ₹21.58 | ₹16.79 | ₹24.29 | **₹20.00** |
+| **Conversions** | 1 | 1 | 0 | **2** |
+| **Conv. Rate (%)** | 5.26% | 3.57% | 0.00% | **3.28%** |
+| **Conversion Value (INR)** | ₹799.00 | ₹599.00 | ₹0.00 | **₹1,398.00** |
+| **ROAS** | **1.95x** | **1.27x** | **0.00x** | **1.15x** |
 
 ---
 
-## 3. Deep-Dive Performance Insights
+## 3. Daily Performance Variations (Natural Fluctuations)
 
-### 3.1. Best-Performing Campaign: Campaign 2 (Home Accessories)
-- **Top Financial Efficiency:** Generated **₹9,188.00** on a modest spend of **₹1,542.90**, producing a phenomenal **5.95x ROAS**.
-- **Lowest CPC:** Achieved an average CPC of **₹7.99**, nearly 35% lower than the campaign average.
-- **Why It Won:** Multiple entry price points (₹399 candles, ₹499 cushions, ₹599 vases) lowered the barrier to purchase, while the landing page design effectively encouraged multi-product cart bundling.
+Unlike synthetic models with artificial upward curves, the three-day simulated dataset reflects realistic daily variations in ad impressions, auction pricing, and visitor behavior:
 
-### 3.2. Highest CTR Campaign: Campaign 3 (Lighting & Ambience)
-- **Peak Engagement:** Recorded a **5.18% CTR**, leading all campaigns.
-- **Search Intent Alignment:** High emotional connection to lifestyle search terms such as `"warm ambient lighting for bedroom"` and `"ceramic bedside table lamp"`.
-- **High Average Order Value:** Even with lower volume (116 clicks), the ₹1,299 ticket price produced **₹9,093.00** in simulated revenue at a **5.10x ROAS**.
-
-### 3.3. Campaign 1: Wall Art & Decor
-- **High Conversion Rate (6.62%):** Wall art demonstrated strong intentionality among buyers once they reached the dedicated `/collections/wall-art` landing page.
-- **Moderate Volume:** 2,810 impressions and 136 clicks. Customers exhibited slightly longer consideration windows before checkout, but high satisfaction once specs (300 GSM, pine wood frame) were reviewed.
-
----
-
-## 4. Planned Targets vs. Actual Simulated Performance
-
-| Metric | Planned Target | Actual Simulated | Variance & Analysis |
-|---|---|---|---|
-| **CTR** | 3.80% – 4.50% | **5.02%** | **+0.72%**: High relevance of ad copy variations and prominent brand terms. |
-| **Average CPC** | ₹12.00 – ₹14.00 | **₹11.15** | **-₹1.85**: Strict bid caps and high Quality Scores reduced clearing auction costs. |
-| **Conversion Rate** | 4.00% – 5.00% | **6.29%** | **+1.79%**: Fast-loading, distraction-free landing pages converted traffic smoothly. |
-| **ROAS** | 3.50x – 4.00x | **5.14x** | **+1.34x**: Exceeded benchmark revenue targets through bundled checkouts. |
+| Date | Campaign | Impressions | Clicks | Spend (INR) | CPC (INR) | CTR (%) | Conversions | Value (INR) |
+|---|---|---|---|---|---|---|---|---|
+| **2026-11-14** | Wall Art & Decor | 190 | 6 | ₹132.00 | ₹22.00 | 3.16% | 0 | ₹0.00 |
+| **2026-11-14** | Home Accessories | 260 | 9 | ₹153.00 | ₹17.00 | 3.46% | 1 | ₹599.00 |
+| **2026-11-14** | Lighting & Ambience | 160 | 5 | ₹125.00 | ₹25.00 | 3.12% | 0 | ₹0.00 |
+| **2026-11-15** | Wall Art & Decor | 175 | 5 | ₹110.00 | ₹22.00 | 2.86% | 0 | ₹0.00 |
+| **2026-11-15** | Home Accessories | 295 | 11 | ₹176.00 | ₹16.00 | 3.73% | 0 | ₹0.00 |
+| **2026-11-15** | Lighting & Ambience | 135 | 4 | ₹95.00 | ₹23.75 | 2.96% | 0 | ₹0.00 |
+| **2026-11-16** | Wall Art & Decor | 215 | 8 | ₹168.00 | ₹21.00 | 3.72% | 1 | ₹799.00 |
+| **2026-11-16** | Home Accessories | 265 | 8 | ₹141.00 | ₹17.62 | 3.02% | 0 | ₹0.00 |
+| **2026-11-16** | Lighting & Ambience | 155 | 5 | ₹120.00 | ₹24.00 | 3.23% | 0 | ₹0.00 |
+| **Totals** | *All 3 Days* | **1,850** | **61** | **₹1,220.00** | **₹20.00** | **3.30%** | **2** | **₹1,398.00** |
 
 ---
 
-## 5. Strategic Optimization Recommendations
+## 4. Small-Scale Conversion Funnel
 
-### Recommendation 1: Budget Re-allocation
-- **Current Allocation:** Equal distribution (~33% per campaign).
-- **Proposed Optimization:**
-  - Increase **Home Accessories** to **45%** of daily budget to exploit its sub-₹8 CPC and 5.95x ROAS.
-  - Maintain **Lighting & Ambience** at **35%** for high-ticket revenue stability.
-  - Scale **Wall Art** to **20%** with tighter exact-match bidding.
+The acquisition funnel highlights typical early-stage drop-offs for a newly launched storefront:
 
-### Recommendation 2: Negative Keyword Expansion
-- Prune search terms that generate accidental clicks:
-  - Add `"rechargeable emergency lamp"`, `"diy clay vases"`, `"cheap wall stickers 99"`, `"led strip lights"` to the campaign-level negative list to prevent budget dilution.
+```text
+[1,850] Impressions (Ad Views)
+   │   (3.30% Click-Through Rate)
+   ▼
+  [61] Clicks (Storefront Visitors)
+   │   (9.84% Added to Cart)
+   ▼
+   [6] Add to Cart (High Purchase Intent)
+   │   (33.33% Completed Checkout)
+   ▼
+   [2] Purchases (Completed Simulated Conversions)
+```
 
-### Recommendation 3: Ad Variation Scaling
-- Data revealed **Ad Variation B** (focusing on living room aesthetic upgrade and ₹399 entry price) generated 14% higher click volume than Variation A.
-- Prioritize Variation B messaging in top ad rotations while introducing responsive assets for seasonal collections.
-
-### Recommendation 4: Landing Page A/B Enhancements
-- Test customer review snippets and ambient lifestyle carousels on the product detail pages to boost conversion rate on high-ticket lighting products.
+- **Drop-off Analysis:** While 6 visitors reached the high-intent stage of adding items to their bag, 4 abandoned before checkout, pointing to friction in buyer confidence, shipping clarity, or first-time purchase hesitation.
 
 ---
 
-## 6. Academic Case Study Conclusion
+## 5. Strategic Observations & Academic Insights
 
-The Haven & Hue digital marketing project validates modern e-commerce advertising principles:
-1. Tight synergy between **Ad Copy Keyword → Ad Extension → Dedicated Landing Page** is paramount for Quality Score maximization.
-2. Low-barrier entry products (Home Accessories at ₹399) serve as exceptional volume drivers and acquisition anchors.
-3. Transparent, editorial brand aesthetics build immediate consumer trust, translating into strong conversion rates and sustainable ROAS.
+### 5.1 Initial Traffic Generation with Limited Conversion Sample
+Across three days, the campaigns established initial visibility (1,850 impressions) and routed 61 targeted visitors to the storefront. However, having only 2 conversions indicates that the data is purely indicative and exploratory. In digital marketing practice, a sample size of 61 clicks is not statistically significant for major conclusions.
+
+### 5.2 Click Attraction Patterns
+- **Campaign 2 (Home Accessories)** captured the greatest share of user interest, earning **28 of the 61 total clicks (45.9%)** at the lowest average CPC (**₹16.79**). Its diverse entry price points (₹399 candles, ₹499 cushions, ₹599 vases) made it naturally more attractive for broad searchers.
+- **Campaign 1 (Wall Art)** produced steady interest (19 clicks) and converted 1 purchase of the Decorative Wall Art (₹799) on Day 3.
+- **Campaign 3 (Lighting)** experienced higher auction costs (**₹24.29 CPC**) with 14 clicks and 0 conversions. The higher ticket price (₹1,299) demands a longer consideration journey than a 3-day test affords.
+
+### 5.3 Acquisition Cost vs. Conversion Value
+- Total advertising expenditure of **₹1,220.00** divided by 2 conversions results in a **Cost Per Acquisition (CPA) of ₹610.00**.
+- While the gross revenue of ₹1,398 yielded a modest **1.15x ROAS** (slightly above direct ad cost breakeven), a ₹610 CPA leaves negligible profit margin when product packaging and operating costs are accounted for.
+
+---
+
+## 6. Actionable Recommendations for Next Phase
+
+1. **Collect More Data Before Changing Budgets:**
+   Avoid premature budget reallocation based on only 61 clicks and 2 conversions. A minimum testing window of 14–21 days with 250–300 clicks is recommended before rebalancing capital between campaigns.
+2. **Optimize Checkout Funnel Conversion:**
+   Address the drop-off between Add to Cart (6) and Purchases (2) by introducing clear trust signals: displaying delivery timelines, hassle-free returns, and an introductory student promo discount banner.
+3. **Refine Keyword Match Types in Campaign 3:**
+   The ₹24.29 CPC in Lighting reflects high competition. Transition broad keywords to phrase match (`"bedside table lamp warm light"`) and add negative keywords (`tube light`, `study lamp cheap`) to lower CPC toward ₹18.00.
+4. **Enhance On-Page Product Detail Content:**
+   Add detailed size visualizers and living room styling pairings to reduce bounce rates on higher-ticket items.
