@@ -19,92 +19,176 @@ COLOR_PRIMARY = "#493323"
 COLOR_SECONDARY = "#85866A"
 COLOR_ACCENT = "#B77D5C"
 COLOR_SURFACE = "#FFFFFF"
-COLOR_BORDER = "#E8E3DA"
-PALETTE = [COLOR_ACCENT, COLOR_SECONDARY, COLOR_PRIMARY, "#D4A373", "#CCD5AE"]
+COLOR_BORDER = "#DED6C7"
+PALETTE = [COLOR_ACCENT, COLOR_SECONDARY, COLOR_PRIMARY, "#C88A58", "#9E9F7F"]
 
-# --- Custom CSS Styling ---
+# --- High-Contrast Custom CSS Styling ---
 st.markdown(f"""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
 
-    /* Global text and background */
+    /* Global canvas & text */
     .stApp {{
-        background-color: {COLOR_BG};
-        color: {COLOR_PRIMARY};
-        font-family: 'Inter', sans-serif;
+        background-color: {COLOR_BG} !important;
+        color: {COLOR_PRIMARY} !important;
+        font-family: 'Inter', -apple-system, sans-serif !important;
     }}
     
-    h1, h2, h3, .font-serif {{
+    h1, h2, h3, h4, .font-serif {{
         font-family: 'Playfair Display', Georgia, serif !important;
         color: {COLOR_PRIMARY} !important;
+        font-weight: 600 !important;
     }}
 
-    /* Card styling */
+    /* Global text color override for Streamlit labels */
+    p, span, label, div {{
+        color: {COLOR_PRIMARY};
+    }}
+
+    /* Top KPI Metric Cards */
     .kpi-card {{
         background-color: {COLOR_SURFACE};
         border: 1px solid {COLOR_BORDER};
-        border-radius: 16px;
-        padding: 18px 20px;
-        box-shadow: 0 4px 14px -2px rgba(73, 51, 35, 0.05);
+        border-radius: 14px;
+        padding: 16px 18px;
+        box-shadow: 0 4px 12px rgba(73, 51, 35, 0.05);
         margin-bottom: 12px;
-        transition: transform 0.2s ease;
+        transition: transform 0.15s ease, border-color 0.15s ease;
     }}
     .kpi-card:hover {{
         border-color: {COLOR_ACCENT};
+        transform: translateY(-2px);
     }}
     .kpi-label {{
         font-size: 11px;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.06em;
         color: {COLOR_SECONDARY};
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }}
     .kpi-value {{
-        font-size: 24px;
-        font-weight: 700;
+        font-size: 26px;
+        font-weight: 800;
         color: {COLOR_PRIMARY};
         font-family: 'Playfair Display', Georgia, serif;
+        line-height: 1.15;
     }}
     .kpi-sub {{
         font-size: 11px;
-        color: {COLOR_SECONDARY};
+        color: #6B5B4E;
+        font-weight: 500;
         margin-top: 4px;
     }}
 
-    /* Notice banner */
+    /* Notice Banner */
     .notice-banner {{
-        background-color: #FFF9F2;
-        border-left: 4px solid {COLOR_ACCENT};
+        background-color: #FFF8EE;
+        border: 1px solid #ECCFA4;
+        border-left: 5px solid {COLOR_ACCENT};
         padding: 12px 18px;
         border-radius: 8px;
-        font-size: 12px;
-        color: {COLOR_PRIMARY};
-        margin-bottom: 20px;
-    }}
-
-    /* Streamlit widget tweaks */
-    div[data-testid="stSidebar"] {{
-        background-color: #F1ECE1;
-        border-right: 1px solid {COLOR_BORDER};
-    }}
-    
-    .stTabs [data-baseweb="tab-list"] {{
-        gap: 8px;
-    }}
-    .stTabs [data-baseweb="tab"] {{
-        background-color: {COLOR_SURFACE};
-        border: 1px solid {COLOR_BORDER};
-        border-radius: 8px;
-        padding: 8px 16px;
-        color: {COLOR_PRIMARY};
         font-size: 13px;
+        color: {COLOR_PRIMARY};
+        line-height: 1.5;
+        margin-bottom: 22px;
         font-weight: 500;
     }}
+
+    /* ================= TABS CONTRAST FIX ================= */
+    .stTabs [data-baseweb="tab-list"] {{
+        gap: 8px;
+        border-bottom: 2px solid {COLOR_BORDER};
+        padding-bottom: 4px;
+    }}
+    
+    /* Unselected tab button */
+    .stTabs [data-baseweb="tab"] {{
+        background-color: #EFE9DE !important;
+        border: 1px solid {COLOR_BORDER} !important;
+        border-radius: 8px 8px 0 0 !important;
+        padding: 10px 18px !important;
+        color: {COLOR_PRIMARY} !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        opacity: 1 !important;
+    }}
+    .stTabs [data-baseweb="tab"]:hover {{
+        background-color: #E5DDD0 !important;
+        color: {COLOR_ACCENT} !important;
+    }}
+    
+    /* Active (Selected) tab button */
     .stTabs [aria-selected="true"] {{
         background-color: {COLOR_PRIMARY} !important;
-        color: #F8F5EF !important;
+        color: #FFFFFF !important;
         border-color: {COLOR_PRIMARY} !important;
+        font-weight: 700 !important;
+    }}
+    .stTabs [aria-selected="true"] span, .stTabs [aria-selected="true"] div {{
+        color: #FFFFFF !important;
+    }}
+
+    /* ================= TABLE CONTRAST FIX ================= */
+    [data-testid="stTable"] table, table {{
+        width: 100% !important;
+        border-collapse: separate !important;
+        border-spacing: 0 !important;
+        border: 1px solid {COLOR_BORDER} !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+        font-family: 'Inter', sans-serif !important;
+    }}
+    
+    /* Table Header */
+    [data-testid="stTable"] th, table th {{
+        background-color: {COLOR_PRIMARY} !important;
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        font-size: 13px !important;
+        padding: 12px 14px !important;
+        text-align: left !important;
+        border-bottom: 2px solid {COLOR_BORDER} !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }}
+    
+    /* Table Data Cells */
+    [data-testid="stTable"] td, table td {{
+        background-color: #FFFFFF !important;
+        color: #382417 !important;
+        font-weight: 500 !important;
+        font-size: 13px !important;
+        padding: 12px 14px !important;
+        border-bottom: 1px solid #ECE6DC !important;
+        border-right: 1px solid #ECE6DC !important;
+    }}
+    
+    /* Table Alternating Row */
+    [data-testid="stTable"] tr:nth-child(even) td, table tr:nth-child(even) td {{
+        background-color: #FAF7F2 !important;
+    }}
+
+    /* ================= INFO / ALERT BOX FIX ================= */
+    .info-card {{
+        background-color: #F1EFEA;
+        border: 1px solid #D5CCC0;
+        border-left: 5px solid {COLOR_SECONDARY};
+        border-radius: 8px;
+        padding: 14px 18px;
+        color: {COLOR_PRIMARY};
+        font-size: 13px;
+        line-height: 1.5;
+        margin-top: 14px;
+        font-weight: 500;
+    }}
+
+    /* Sidebar adjustments */
+    section[data-testid="stSidebar"] {{
+        background-color: #EFE9DE !important;
+        border-right: 1px solid {COLOR_BORDER} !important;
+    }}
+    section[data-testid="stSidebar"] p, section[data-testid="stSidebar"] span {{
+        color: {COLOR_PRIMARY} !important;
     }}
 </style>
 """, unsafe_allow_html=True)
@@ -153,18 +237,18 @@ with st.sidebar:
     if logo_path.exists():
         st.image(str(logo_path), use_container_width=True)
     else:
-        st.title("Haven & Hue")
+        st.markdown(f"<h2 style='color: {COLOR_PRIMARY};'>Haven & Hue</h2>", unsafe_allow_html=True)
         st.caption("Home Decor • Digital Marketing Case Study")
     
     st.markdown("---")
-    st.markdown("### 🔍 Filters & Settings")
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-bottom: 8px;'>🔍 Filters & Controls</h4>", unsafe_allow_html=True)
     
     if not df_all.empty:
         min_date = df_all['Date'].min()
         max_date = df_all['Date'].max()
         
         selected_dates = st.date_input(
-            "Select Date Range",
+            "Reporting Date Window",
             value=(min_date, max_date),
             min_value=min_date,
             max_value=max_date
@@ -172,7 +256,7 @@ with st.sidebar:
         
         all_campaigns = sorted(df_all['Campaign'].unique().tolist())
         selected_campaigns = st.multiselect(
-            "Select Campaigns",
+            "Filter Campaigns",
             options=all_campaigns,
             default=all_campaigns
         )
@@ -181,12 +265,15 @@ with st.sidebar:
         selected_campaigns = []
         
     st.markdown("---")
-    st.markdown("#### 📖 Project Info")
-    st.info(
-        "**Brand:** Haven & Hue\n\n"
-        "**Context:** Student Advertising Experiment\n\n"
-        "**Status:** Simulated Data – Academic Case Study\n\n"
-        "**Duration:** 3 Days Initial Testing"
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-bottom: 8px;'>📖 Academic Case Study</h4>", unsafe_allow_html=True)
+    st.markdown(
+        f"<div style='font-size: 12px; line-height: 1.6; color: {COLOR_PRIMARY};'>"
+        f"<strong>Brand:</strong> Haven & Hue<br>"
+        f"<strong>Experiment:</strong> 3-Day Student Trial<br>"
+        f"<strong>Total Budget:</strong> ₹1,220.00<br>"
+        f"<strong>Status:</strong> Simulated Benchmark Data"
+        f"</div>",
+        unsafe_allow_html=True
     )
 
 # Filter dataset based on selections
@@ -206,27 +293,27 @@ tot_imp, tot_clicks, tot_ctr, tot_cost, tot_cpc, tot_conv, tot_cvr, tot_val, tot
 # --- Header Section ---
 col_head1, col_head2 = st.columns([3, 1])
 with col_head1:
-    st.markdown("<h1 style='margin-bottom: 4px;'>Haven & Hue — Google Ads Performance Dashboard</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #85866A; font-size: 14px; margin-bottom: 12px;'>Early-Stage Campaign Performance Tracking • 3-Day Student Digital Marketing Experiment</p>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='color: {COLOR_PRIMARY}; margin-bottom: 4px; font-size: 32px;'>Haven & Hue — Google Ads Performance Dashboard</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color: {COLOR_SECONDARY}; font-size: 14px; margin-bottom: 12px; font-weight: 500;'>Early-Stage Campaign Performance Tracking • 3-Day Student Digital Marketing Experiment</p>", unsafe_allow_html=True)
 
 with col_head2:
     st.markdown(f"""
     <div style='text-align: right; padding-top: 10px;'>
-        <span style='background-color: {COLOR_PRIMARY}; color: #FFFFFF; font-size: 11px; padding: 4px 12px; border-radius: 20px; font-weight: 600;'>
-            Reporting Period: 3 Days
+        <span style='background-color: {COLOR_PRIMARY}; color: #FFFFFF; font-size: 12px; padding: 6px 14px; border-radius: 20px; font-weight: 700; letter-spacing: 0.03em;'>
+            Reporting: 3 Days
         </span>
     </div>
     """, unsafe_allow_html=True)
 
 # Mandatory Academic Disclaimer Notice
-st.markdown("""
+st.markdown(f"""
 <div class="notice-banner">
     ⚠️ <strong>Simulated Data – Academic Case Study:</strong> This dashboard demonstrates early-stage advertising metrics for a small, student-managed advertising experiment running for three days. Figures represent simulated educational data. No live Google Ads campaigns were activated, and no real funds were expended.
 </div>
 """, unsafe_allow_html=True)
 
 # --- KPI Metric Cards Row (9 Key Performance Indicators) ---
-st.markdown("### 📌 Executive KPI Summary (3-Day Aggregate)")
+st.markdown(f"<h3 style='color: {COLOR_PRIMARY}; font-size: 20px; margin-bottom: 12px;'>📌 Executive KPI Summary (3-Day Aggregate)</h3>", unsafe_allow_html=True)
 kpi_cols1 = st.columns(5)
 kpi_cols2 = st.columns(4)
 
@@ -244,7 +331,7 @@ with kpi_cols1[1]:
     <div class="kpi-card">
         <div class="kpi-label">Total Clicks</div>
         <div class="kpi-value">{tot_clicks:,}</div>
-        <div class="kpi-sub">Storefront visits</div>
+        <div class="kpi-sub">Storefront visitors</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -271,7 +358,7 @@ with kpi_cols1[4]:
     <div class="kpi-card">
         <div class="kpi-label">Average CPC</div>
         <div class="kpi-value">₹{tot_cpc:.2f}</div>
-        <div class="kpi-sub">Early keyword cost</div>
+        <div class="kpi-sub">Initial keyword cost</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -311,7 +398,55 @@ with kpi_cols2[3]:
     </div>
     """, unsafe_allow_html=True)
 
-st.markdown("---")
+st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+
+# Helper function to create standard high-contrast Plotly layouts
+def apply_chart_style(fig, title_text, y1_title, y2_title=None):
+    fig.update_layout(
+        title=dict(
+            text=f"<b>{title_text}</b>",
+            font=dict(family="Playfair Display", size=15, color=COLOR_PRIMARY),
+            x=0.02,
+            y=0.95
+        ),
+        paper_bgcolor="#FFFFFF",
+        plot_bgcolor="#FFFFFF",
+        font=dict(family="Inter", size=12, color=COLOR_PRIMARY),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=1.03,
+            xanchor="right",
+            x=0.98,
+            font=dict(color=COLOR_PRIMARY, size=11, family="Inter")
+        ),
+        margin=dict(l=45, r=45, t=55, b=45)
+    )
+    fig.update_xaxes(
+        title_font=dict(color=COLOR_PRIMARY, size=12, family="Inter"),
+        tickfont=dict(color=COLOR_PRIMARY, size=11, family="Inter"),
+        showgrid=True,
+        gridcolor="#EFECE5",
+        linecolor=COLOR_BORDER
+    )
+    fig.update_yaxes(
+        title=dict(text=f"<b>{y1_title}</b>", font=dict(color=COLOR_PRIMARY, size=12)),
+        tickfont=dict(color=COLOR_PRIMARY, size=11, family="Inter"),
+        showgrid=True,
+        gridcolor="#EFECE5",
+        linecolor=COLOR_BORDER
+    )
+    if y2_title:
+        fig.update_layout(
+            yaxis2=dict(
+                title=dict(text=f"<b>{y2_title}</b>", font=dict(color=COLOR_ACCENT, size=12)),
+                tickfont=dict(color=COLOR_ACCENT, size=11, family="Inter"),
+                overlaying="y",
+                side="right",
+                showgrid=False
+            )
+        )
+    return fig
 
 # --- Interactive Analytical Tabs ---
 tab1, tab2, tab3, tab4 = st.tabs([
@@ -323,86 +458,89 @@ tab1, tab2, tab3, tab4 = st.tabs([
 
 # ================= TAB 1: VISUAL CHARTS =================
 with tab1:
-    st.markdown("#### 1. Daily Campaign Volume Trends")
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-top: 10px; margin-bottom: 8px;'>1. Daily Campaign Volume Trends</h4>", unsafe_allow_html=True)
     chart_c1, chart_c2 = st.columns(2)
     
-    daily_summary = filtered_df.groupby('Date')[['Impressions', 'Clicks', 'Cost', 'Conversions']].sum().reset_index()
-    daily_summary['Date_Str'] = daily_summary['Date'].astype(str)
+    # Map dates to clean labels
+    date_labels = {
+        min_date: "Day 1 (Nov 14)",
+        (min_date + pd.Timedelta(days=1)): "Day 2 (Nov 15)",
+        max_date: "Day 3 (Nov 16)"
+    }
     
+    daily_summary = filtered_df.groupby('Date')[['Impressions', 'Clicks', 'Cost', 'Conversions']].sum().reset_index()
+    daily_summary['Day_Label'] = daily_summary['Date'].map(lambda d: date_labels.get(d, str(d)))
+    
+    # Chart 1: Daily Impressions & Clicks with clean integer scales
     with chart_c1:
         fig1 = go.Figure()
         fig1.add_trace(go.Bar(
-            x=daily_summary['Date_Str'],
+            x=daily_summary['Day_Label'],
             y=daily_summary['Impressions'],
-            name="Impressions",
+            name="Impressions (Ad Views)",
             marker_color=COLOR_SECONDARY,
             yaxis="y1"
         ))
         fig1.add_trace(go.Scatter(
-            x=daily_summary['Date_Str'],
+            x=daily_summary['Day_Label'],
             y=daily_summary['Clicks'],
-            name="Clicks",
-            line=dict(color=COLOR_ACCENT, width=3),
+            name="Clicks (Site Visits)",
+            line=dict(color=COLOR_ACCENT, width=3.5),
+            marker=dict(size=8, color=COLOR_ACCENT),
             mode="lines+markers",
             yaxis="y2"
         ))
-        fig1.update_layout(
-            title="Daily Impressions (Bar) vs. Clicks (Line)",
-            paper_bgcolor=COLOR_SURFACE,
-            plot_bgcolor=COLOR_SURFACE,
-            font=dict(family="Inter", color=COLOR_PRIMARY),
-            yaxis=dict(title="Impressions", showgrid=True, gridcolor="#EFEAE0"),
-            yaxis2=dict(title="Clicks", overlaying="y", side="right", showgrid=False),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-            margin=dict(l=40, r=40, t=50, b=40)
-        )
+        apply_chart_style(fig1, "Daily Impressions (Bar) vs. Clicks (Line)", "Impressions", "Clicks")
+        fig1.update_yaxes(range=[0, 800], dtick=200, yaxis="y1")
+        fig1.update_layout(yaxis2=dict(range=[0, 30], dtick=5, overlaying="y", side="right", showgrid=False))
         st.plotly_chart(fig1, use_container_width=True)
 
+    # Chart 2: Daily CTR Trend
     with chart_c2:
         df_ctr = filtered_df.copy()
         df_ctr['CTR'] = (df_ctr['Clicks'] / df_ctr['Impressions']) * 100
-        df_ctr['Date_Str'] = df_ctr['Date'].astype(str)
+        df_ctr['Day_Label'] = df_ctr['Date'].map(lambda d: date_labels.get(d, str(d)))
+        
+        # Clean campaign names
+        df_ctr['Campaign_Short'] = df_ctr['Campaign'].str.replace('Campaign ', 'C').str.replace(' & Decor', '').str.replace(' & Ambience', '')
         
         fig2 = px.line(
             df_ctr,
-            x="Date_Str",
+            x="Day_Label",
             y="CTR",
-            color="Campaign",
+            color="Campaign_Short",
             markers=True,
-            title="Daily Click-Through Rate (CTR %) by Campaign",
-            color_discrete_sequence=[COLOR_ACCENT, COLOR_SECONDARY, COLOR_PRIMARY]
+            color_discrete_sequence=[COLOR_PRIMARY, COLOR_SECONDARY, COLOR_ACCENT]
         )
-        fig2.update_layout(
-            paper_bgcolor=COLOR_SURFACE,
-            plot_bgcolor=COLOR_SURFACE,
-            font=dict(family="Inter", color=COLOR_PRIMARY),
-            yaxis=dict(title="CTR (%)", showgrid=True, gridcolor="#EFEAE0"),
-            xaxis=dict(title="Date"),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-            margin=dict(l=40, r=40, t=50, b=40)
-        )
+        apply_chart_style(fig2, "Daily Click-Through Rate (CTR %) by Campaign", "CTR (%)")
+        fig2.update_yaxes(range=[2.0, 4.5], dtick=0.5, ticksuffix="%")
         st.plotly_chart(fig2, use_container_width=True)
 
-    st.markdown("#### 2. Financial & Conversion Performance")
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-top: 14px; margin-bottom: 8px;'>2. Financial & Conversion Performance</h4>", unsafe_allow_html=True)
     chart_c3, chart_c4 = st.columns(2)
     
+    # Chart 3: Spend Distribution Donut Chart
     with chart_c3:
         spend_by_camp = filtered_df.groupby('Campaign')['Cost'].sum().reset_index()
+        spend_by_camp['Campaign_Label'] = spend_by_camp['Campaign'].str.replace('Campaign ', 'Camp. ')
+        
         fig3 = px.pie(
             spend_by_camp,
             values="Cost",
-            names="Campaign",
-            title="Advertising Spend Distribution by Campaign (Total: ₹1,220)",
+            names="Campaign_Label",
             hole=0.45,
             color_discrete_sequence=[COLOR_ACCENT, COLOR_SECONDARY, COLOR_PRIMARY]
         )
-        fig3.update_layout(
-            paper_bgcolor=COLOR_SURFACE,
-            font=dict(family="Inter", color=COLOR_PRIMARY),
-            margin=dict(l=40, r=40, t=50, b=40)
+        fig3.update_traces(
+            textposition='inside',
+            textinfo='percent+label',
+            textfont=dict(color="#FFFFFF", size=11, family="Inter")
         )
+        apply_chart_style(fig3, "Spend Distribution by Campaign (Total: ₹1,220)", "")
+        fig3.update_layout(showlegend=True)
         st.plotly_chart(fig3, use_container_width=True)
 
+    # Chart 4: Conversion Value vs. ROAS
     with chart_c4:
         roas_camp = filtered_df.groupby('Campaign').agg({
             'Cost': 'sum',
@@ -410,58 +548,48 @@ with tab1:
             'Conversions': 'sum'
         }).reset_index()
         roas_camp['ROAS'] = roas_camp.apply(lambda r: r['Conversion Value'] / r['Cost'] if r['Cost'] > 0 else 0.0, axis=1)
+        roas_camp['Short_Name'] = ["Wall Art", "Accessories", "Lighting"]
         
         fig4 = go.Figure()
         fig4.add_trace(go.Bar(
-            x=roas_camp['Campaign'],
+            x=roas_camp['Short_Name'],
             y=roas_camp['Conversion Value'],
             name="Conversion Value (₹)",
             marker_color=COLOR_PRIMARY,
             yaxis="y1"
         ))
         fig4.add_trace(go.Scatter(
-            x=roas_camp['Campaign'],
+            x=roas_camp['Short_Name'],
             y=roas_camp['ROAS'],
             name="ROAS (Multiplier)",
-            line=dict(color=COLOR_ACCENT, width=3),
+            line=dict(color=COLOR_ACCENT, width=3.5),
+            marker=dict(size=8, color=COLOR_ACCENT),
             mode="lines+markers",
             yaxis="y2"
         ))
-        fig4.update_layout(
-            title="Conversion Value (₹) vs. ROAS (Multiplier)",
-            paper_bgcolor=COLOR_SURFACE,
-            plot_bgcolor=COLOR_SURFACE,
-            font=dict(family="Inter", color=COLOR_PRIMARY),
-            yaxis=dict(title="Conversion Value (₹)", showgrid=True, gridcolor="#EFEAE0"),
-            yaxis2=dict(title="ROAS (x)", overlaying="y", side="right", showgrid=False),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
-            margin=dict(l=40, r=40, t=50, b=40)
-        )
+        apply_chart_style(fig4, "Conversion Value (₹) vs. ROAS (Multiplier)", "Revenue (₹)", "ROAS (x)")
+        fig4.update_yaxes(range=[0, 1000], dtick=200, tickprefix="₹", yaxis="y1")
+        fig4.update_layout(yaxis2=dict(range=[0, 2.5], dtick=0.5, ticksuffix="x", overlaying="y", side="right", showgrid=False))
         st.plotly_chart(fig4, use_container_width=True)
 
-    st.markdown("#### 3. Small-Scale Marketing Acquisition Funnel")
-    funnel_stages = ['Impressions (Ad Views)', 'Clicks (Site Visitors)', 'Add to Cart (Intent)', 'Purchases (Conversions)']
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-top: 14px; margin-bottom: 8px;'>3. Small-Scale Marketing Acquisition Funnel</h4>", unsafe_allow_html=True)
+    funnel_stages = ['Impressions (Ad Views)', 'Clicks (Storefront Visits)', 'Add to Cart (High Intent)', 'Purchases (Conversions)']
     funnel_values = [1850, 61, 6, 2]
     
     fig5 = go.Figure(go.Funnel(
         y=funnel_stages,
         x=funnel_values,
         textinfo="value+percent initial",
-        marker=dict(color=[COLOR_SECONDARY, "#A3A380", COLOR_ACCENT, COLOR_PRIMARY]),
-        connector={"line": {"color": COLOR_BORDER, "dash": "solid", "width": 1}}
+        textfont=dict(color="#FFFFFF", size=12, family="Inter"),
+        marker=dict(color=[COLOR_SECONDARY, "#9E9F7F", COLOR_ACCENT, COLOR_PRIMARY]),
+        connector={"line": {"color": COLOR_BORDER, "dash": "solid", "width": 1.5}}
     ))
-    fig5.update_layout(
-        title="Conversion Funnel: 1,850 Impressions → 61 Clicks → 6 Add to Cart → 2 Purchases",
-        paper_bgcolor=COLOR_SURFACE,
-        plot_bgcolor=COLOR_SURFACE,
-        font=dict(family="Inter", color=COLOR_PRIMARY),
-        margin=dict(l=40, r=40, t=50, b=40)
-    )
+    apply_chart_style(fig5, "Funnel: 1,850 Impressions → 61 Clicks → 6 Add to Cart → 2 Purchases", "")
     st.plotly_chart(fig5, use_container_width=True)
 
 # ================= TAB 2: CAMPAIGN COMPARISON TABLE =================
 with tab2:
-    st.markdown("#### 📊 Multi-Metric Campaign Performance Matrix")
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-top: 10px; margin-bottom: 8px;'>📊 Multi-Metric Campaign Performance Matrix</h4>", unsafe_allow_html=True)
     
     camp_summary = filtered_df.groupby('Campaign').agg({
         'Impressions': 'sum',
@@ -484,21 +612,27 @@ with tab2:
     display_df['Conv. Rate (%)'] = display_df['Conv. Rate (%)'].apply(lambda x: f"{x:.2f}%")
     display_df['ROAS'] = display_df['ROAS'].apply(lambda x: f"{x:.2f}x")
     
-    st.dataframe(display_df, use_container_width=True, hide_index=True)
+    st.table(display_df)
     
-    st.markdown("#### 📅 Granular Daily Log (3-Day Natural Variations)")
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-top: 18px; margin-bottom: 8px;'>📅 Granular Daily Log (3-Day Natural Variations)</h4>", unsafe_allow_html=True)
     log_df = filtered_df.copy()
-    log_df['CTR (%)'] = ((log_df['Clicks'] / log_df['Impressions']) * 100).round(2)
-    log_df['CPC (₹)'] = (log_df['Cost'] / log_df['Clicks']).round(2)
-    log_df['Conv. Rate (%)'] = ((log_df['Conversions'] / log_df['Clicks']) * 100).round(2)
-    log_df['ROAS'] = (log_df['Conversion Value'] / log_df['Cost']).round(2)
-    st.dataframe(log_df.sort_values(by=['Date', 'Campaign']), use_container_width=True, hide_index=True)
+    log_df['CTR (%)'] = ((log_df['Clicks'] / log_df['Impressions']) * 100).round(2).apply(lambda x: f"{x:.2f}%")
+    log_df['CPC (₹)'] = (log_df['Cost'] / log_df['Clicks']).round(2).apply(lambda x: f"₹{x:.2f}")
+    log_df['Cost (₹)'] = log_df['Cost'].apply(lambda x: f"₹{x:,.2f}")
+    log_df['Value (₹)'] = log_df['Conversion Value'].apply(lambda x: f"₹{x:,.2f}")
+    log_df['ROAS'] = (log_df['Conversion Value'] / log_df['Cost']).round(2).apply(lambda x: f"{x:.2f}x")
+    
+    cols_to_show = ['Date', 'Campaign', 'Impressions', 'Clicks', 'Cost (₹)', 'CPC (₹)', 'CTR (%)', 'Conversions', 'Value (₹)', 'ROAS']
+    st.table(log_df[cols_to_show].sort_values(by=['Date', 'Campaign']))
 
 # ================= TAB 3: TARGETS VS SIMULATED =================
 with tab3:
-    st.markdown("#### 🎯 Benchmark Comparison: Proposed Campaign Targets vs. Simulated Performance")
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-top: 10px; margin-bottom: 8px;'>🎯 Benchmark Comparison: Proposed Campaign Targets vs. Simulated Performance</h4>", unsafe_allow_html=True)
     st.markdown(
-        "Evaluating planned benchmarks against early 3-day student campaign test performance."
+        f"<p style='color: {COLOR_PRIMARY}; font-size: 13px; font-weight: 500;'>"
+        f"Evaluating planned benchmarks against early 3-day student campaign test performance."
+        f"</p>",
+        unsafe_allow_html=True
     )
     
     target_data = [
@@ -533,18 +667,22 @@ with tab3:
     ]
     st.table(pd.DataFrame(target_data))
     
-    st.info("ℹ️ **Observation on Sample Size:** With only 61 total clicks over 3 days, performance variances represent natural auction volatility and small-sample variability rather than definitive long-term trends.")
+    st.markdown(f"""
+    <div class="info-card">
+        ℹ️ <strong>Observation on Sample Size:</strong> With only 61 total clicks over 3 days, performance variances represent natural auction volatility and small-sample variability rather than definitive long-term trends.
+    </div>
+    """, unsafe_allow_html=True)
 
 # ================= TAB 4: MARKETING INSIGHTS =================
 with tab4:
-    st.markdown("#### 💡 Strategic Insights & Student Project Recommendations")
+    st.markdown(f"<h4 style='color: {COLOR_PRIMARY}; margin-top: 10px; margin-bottom: 8px;'>💡 Strategic Insights & Student Project Recommendations</h4>", unsafe_allow_html=True)
     
     col_in1, col_in2 = st.columns(2)
     
     with col_in1:
         st.markdown(f"""
-        <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER}; margin-bottom: 16px;'>
-            <h4 style='color: {COLOR_ACCENT}; margin-top: 0;'>🔍 Initial Traffic Generation vs. Limited Conversion Data</h4>
+        <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER}; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(73, 51, 35, 0.04);'>
+            <h4 style='color: {COLOR_ACCENT}; margin-top: 0; font-size: 16px;'>🔍 Initial Traffic Generation vs. Limited Conversion Data</h4>
             <p style='font-size: 13px; line-height: 1.6; color: {COLOR_PRIMARY};'>
                 Across the 3-day testing window, the campaign generated <strong>1,850 impressions</strong> and <strong>61 clicks</strong>, demonstrating initial keyword discoverability.
                 <br>• However, with only <strong>2 recorded purchases</strong>, conversion data is strictly exploratory.
@@ -552,8 +690,8 @@ with tab4:
             </p>
         </div>
         
-        <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER};'>
-            <h4 style='color: {COLOR_PRIMARY}; margin-top: 0;'>🖱️ Click Attraction & Campaign Characteristics</h4>
+        <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER}; box-shadow: 0 4px 12px rgba(73, 51, 35, 0.04);'>
+            <h4 style='color: {COLOR_PRIMARY}; margin-top: 0; font-size: 16px;'>🖱️ Click Attraction & Campaign Characteristics</h4>
             <p style='font-size: 13px; line-height: 1.6; color: {COLOR_PRIMARY};'>
                 <strong>Campaign 2 (Home Accessories)</strong> captured the highest interest:
                 <br>• <strong>Top Clicks:</strong> 28 of the 61 total clicks (45.9% of traffic) at an affordable average CPC of <strong>₹16.79</strong>.
@@ -565,8 +703,8 @@ with tab4:
 
     with col_in2:
         st.markdown(f"""
-        <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER}; margin-bottom: 16px;'>
-            <h4 style='color: {COLOR_SECONDARY}; margin-top: 0;'>⚖️ Acquisition Cost vs. Conversion Value</h4>
+        <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER}; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(73, 51, 35, 0.04);'>
+            <h4 style='color: {COLOR_SECONDARY}; margin-top: 0; font-size: 16px;'>⚖️ Acquisition Cost vs. Conversion Value</h4>
             <p style='font-size: 13px; line-height: 1.6; color: {COLOR_PRIMARY};'>
                 • <strong>Total Advertising Expenditure:</strong> ₹1,220 across 3 days.
                 <br>• <strong>Cost Per Acquisition (CPA):</strong> <strong>₹610.00</strong> per acquired order (₹1,220 / 2 conversions).
@@ -575,8 +713,8 @@ with tab4:
             </p>
         </div>
         
-        <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER};'>
-            <h4 style='color: {COLOR_ACCENT}; margin-top: 0;'>🚀 Actionable Next Steps for Student Evaluation</h4>
+        <div style='background-color: {COLOR_SURFACE}; padding: 20px; border-radius: 14px; border: 1px solid {COLOR_BORDER}; box-shadow: 0 4px 12px rgba(73, 51, 35, 0.04);'>
+            <h4 style='color: {COLOR_ACCENT}; margin-top: 0; font-size: 16px;'>🚀 Actionable Next Steps for Student Evaluation</h4>
             <p style='font-size: 13px; line-height: 1.6; color: {COLOR_PRIMARY};'>
                 1. <strong>Do Not Make Drastic Budget Shifts Yet:</strong> With only 3 days and 61 clicks, collecting more data (minimum 200–300 clicks over 14 days) is critical before altering campaign budgets.
                 <br>2. <strong>Address the Funnel Drop-off:</strong> 6 users added items to their cart, but only 2 completed checkout. Adding trust badges, shipping timelines, or a first-purchase incentive can lift checkout completion.
@@ -589,7 +727,7 @@ with tab4:
 # Footer
 st.markdown("---")
 st.markdown(
-    "<div style='text-align: center; color: #85866A; font-size: 12px;'>"
+    f"<div style='text-align: center; color: {COLOR_SECONDARY}; font-size: 12px; font-weight: 500;'>"
     "Haven & Hue Home Decor — Simulated Data – Academic Case Study • 3-Day Student Digital Marketing Experiment"
     "</div>",
     unsafe_allow_html=True
