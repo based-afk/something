@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-bg: #F8F5EF;
+    --brand-primary: #493323;
+    --brand-secondary: #85866A;
+    --brand-accent: #B77D5C;
+    --brand-surface: #FFFFFF;
+    --brand-border: #E8E3DA;
+  }
+
+  body {
+    background-color: #F8F5EF;
+    color: #493323;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Custom utility classes */
+.bg-brand-bg { background-color: #F8F5EF; }
+.bg-brand-surface { background-color: #FFFFFF; }
+.bg-brand-secondary { background-color: #85866A; }
+.bg-brand-accent { background-color: #B77D5C; }
+.bg-brand-accent-hover:hover { background-color: #9f6545; }
+
+.text-brand-primary { color: #493323; }
+.text-brand-secondary { color: #85866A; }
+.text-brand-accent { color: #B77D5C; }
+
+.border-brand { border-color: #E8E3DA; }
+.border-brand-accent { border-color: #B77D5C; }
+
+/* Subtle elevation shadow */
+.shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(73, 51, 35, 0.05), 0 2px 6px -1px rgba(73, 51, 35, 0.03);
+}
+
+.shadow-card {
+  box-shadow: 0 10px 25px -4px rgba(73, 51, 35, 0.07), 0 4px 8px -2px rgba(73, 51, 35, 0.04);
+}
